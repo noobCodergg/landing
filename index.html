@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luxury Brand</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Custom Tailwind Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontSize: {
+            '10': '10px',
+          },
+          fontFamily: {
+            futura: ['Futura', 'sans-serif'],
+          },
+          colors: {
+            'gold': '#a67c00',
+            'gray-666': '#666',
+          },
+          spacing: {
+            '90vh': '90vh',
+          },
+          boxShadow: {
+            'custom': '0 1px 3px rgba(0, 0, 0, 0.1)',
+          },
+          letterSpacing: {
+            '1px': '1px',
+            '2px': '2px',
+          },
+          backgroundImage: {
+  'bg-1': "url('images/RAJ06379.jpg')",
+  'bg-2' : "url('images/RAJ06356.jpg')"
+}
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Futura:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Mobile Adjustments -->
+  <style>
+    @media (max-width: 768px) {
+      .hero {
+        align-items: center;
+        background-position: center;
+      }
+      .hero-1 {
+        height: 60vh;
+        padding-bottom: 20px;
+      }
+      .hero-content {
+        max-width: 90%;
+      }
+      .hero-1 h1 {
+        font-size: 12px;
+        background-image: url('images/RAJ06356.jpg');
+      }
+      .hero h2 {
+        font-size: 20px;
+      }
+      .hero-link {
+        font-size: 16px;
+      }
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 20px;
+        max-width: 100%;
+        padding: 0 10px;
+      }
+      .product img {
+        width: 100%;
+      }
+      .category-section {
+        padding: 20px;
+      }
+      .category-list {
+        display: grid !important; /* Override any flex */
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 20px;
+        justify-items: center;
+      }
+      .category-list li {
+        font-size: 16px;
+      }
+      .category-list img {
+        width: 180px;
+        height: 240px;
+      }
+    }
+  </style>
+
+  <style>
+    
+  </style>
+</head>
+<body class="m-0 p-0 box-border font-futura">
+  <!-- Navbar -->
+  <nav class="navbar fixed top-0 w-full bg-white py-5 text-center z-[1000] shadow-custom">
+    <div class="logo text-2xl font-medium uppercase tracking-[2px] text-black">Luxury Brand</div>
+  </nav>
+
+  <!-- Hero Section 1 -->
+  <section class="hero hero-1  bg-cover bg-center bg-bg-1 flex justify-center items-end text-center text-white relative h-[100vh] pb-10">
+    <div class="hero-content max-w-[800px] z-[1]">
+      <h1 class="text-[10px] font-medium uppercase tracking-[2px] mb-[10px]">Men</h1>
+      <h2 class="text-2xl font-normal uppercase tracking-[2px] mb-5">Eid Panjabi collection - 2025</h2>
+      <a href="#" class="hero-link text-sm text-white uppercase underline py-[10px] px-5 transition-colors duration-300">Order Now!</a>
+    </div>
+  </section>
+
+  <!-- Product Category Section -->
+  <section class="category-section py-10 text-center bg-[#f7f7f7]">
+    <h4 class="section-title text-[32px] font-medium uppercase tracking-[2px] mb-10">Explore the collections of Izzah</h4>
+    <ul class="category-list list-none grid grid-cols-5 gap-10 justify-center max-w-6xl mx-auto" id="category-list"></ul>
+  </section>
+
+  <!-- Hero Section 2 -->
+  <section class="hero hero-2 bg-bg-2 bg-cover bg-center h-screen relative"></section>
+
+  <!-- Product Section -->
+  <section class="product-section py-20 text-center">
+    <p class="section-subtitle text-base uppercase tracking-[2px] text-gray-666 mb-[10px]">Women</p>
+    <h3 class="section-title text-[32px] font-medium uppercase tracking-[2px] mb-10">Iconic Bags</h3>
+    <div class="product-grid grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-[30px] max-w-[1200px] mx-auto my-10" id="product-grid"></div>
+    <div class="discover-btn-container mt-10">
+      <a href="#" class="discover-btn text-base text-black uppercase no-underline border border-black py-[10px] px-5 rounded-[20px] transition-colors duration-300 hover:bg-black hover:text-white">Discover the Collection</a>
+    </div>
+  </section>
+
+
+  <section class="flex justify-center items-center min-h-screen" id="order">
+    <div class="max-w-[1150px] flex flex-col items-center gap-16 w-full p-5 text-black bg-white rounded-md shadow-md md:p-12">
+        <h1 class="text-5xl font-bold text-center max-md:text-3xl">Order Your Product</h1>
+        <div class="w-full">
+            <div class="flex flex-col items-start gap-16 md:flex-row">
+                <!-- Left Side -->
+                <div id="scrollbar" class="w-[60%] max-md:w-full flex flex-col gap-4">
+                    
+                  
+                    <h2 class="mb-4 text-lg font-bold">Customer Information</h2>
+                    <div>
+                        <label class="block mb-1 text-sm font-medium">নাম *</label>
+                        <input type="text" class="w-full p-2 mb-2 border border-gray-300 rounded-md md:mb-4" placeholder="আপনার নাম লিখুন">
+                    </div>
+                    <div>
+                        <label class="block mb-1 text-sm font-medium">মোবাইল নাম্বার *</label>
+                        <input type="text" class="w-full p-2 mb-2 border border-gray-300 rounded-md md:mb-4" placeholder="আপনার ১১ ডিজিটের ফোন নাম্বার দিন">
+                    </div>
+                    <div>
+                        <label class="block mb-1 text-sm font-medium">ঠিকানা *</label>
+                        <input type="text" class="w-full p-2 mb-2 border border-gray-300 rounded-md md:mb-4" placeholder="আপনার ঠিকানা (বাসা নং, রাস্তা, গ্রাম, থানা, জেলা)">
+                    </div>
+                    <div class="grid grid-cols-2 gap-2">
+                        <label class="p-2 border border-gray-300 rounded-md cursor-pointer">
+                            <input class="cursor-pointer" type="radio" name="location" value="Dhaka" checked>
+                            <span class="pl-3 cursor-pointer">ঢাকার ভিতরে</span>
+                        </label>
+                        <label class="p-2 border border-gray-300 rounded-md cursor-pointer">
+                            <input class="cursor-pointer" type="radio" name="location" value="Outside Dhaka">
+                            <span class="pl-3 cursor-pointer">ঢাকার বাইরে</span>
+                        </label>
+                    </div>
+                    <h2 class="mb-4 text-lg font-semibold">Payment</h2>
+                    <div class="flex flex-col text-gray-600 border border-gray-300">
+                        <div class="flex items-center justify-between p-5 border-b border-gray-300 rounded-md bg-gray-50">
+                            <div class="cursor-pointer">
+                                <input class="cursor-pointer" type="radio" id="cash-on" name="payment-method" value="CASH" checked>
+                                <label class="cursor-pointer" for="cash-on">Cash on Delivery</label>
+                            </div>
+                        </div>
+                        <p class="p-5">🎁 ১ টাকাও অগ্রিম পেমেন্ট ছাড়া সারা বাংলাদেশ এ ক্যাশ অন ডেলিভারি তে অর্ডার করুন ।</p>
+                    </div>
+                    <button class="w-full py-4 text-white bg-green-900 rounded-md cursor-pointer place-order-btn" id="placeOrder">
+                        <i class="fa-solid fa-lock"></i> Place Order <span id="finalTotal">600</span>৳
+                    </button>
+                </div>
+                <!-- Right Side -->
+                <div class="w-[40%] max-md:w-full sticky top-2">
+                    <h2 class="mb-4 text-lg font-bold">Your order</h2>
+                    <div class="border border-gray-300 rounded-md" id="orderList">
+                        <div class="flex justify-between p-6 text-sm font-semibold border-b border-gray-300">
+                            <span>Product</span>
+                            <span>Subtotal</span>
+                        </div>
+                        <div class="flex justify-between p-6 text-sm border-b border-gray-300">
+                            <span>Product Name × <span id="orderProductQty">1</span></span>
+                            <span id="subtotal">500৳</span>
+                        </div>
+                        <div class="flex justify-between p-6 text-sm font-semibold border-b border-gray-300">
+                            <span>Subtotal</span>
+                            <span id="subtotalDisplay">500৳</span>
+                        </div>
+                        <div class="flex justify-between p-6 text-sm font-semibold border-b border-gray-300">
+                            <span>Delivery Charge</span>
+                            <span id="deliveryCharge">100৳</span>
+                        </div>
+                        <div class="flex justify-between p-4 text-lg font-bold">
+                            <span>Total</span>
+                            <span id="totalPrice">600৳</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container px-5 mx-auto my-5 bg-white lg:px-10" id="order_now">
+  <div class="border border-[#b79797] rounded-lg p-5">
+    <div class="text-2xl font-semibold text-center">অর্ডার করতে সঠিক তথ্য দিয়ে নিচের ফর্ম টি পূরণ করুন</div>
+    <div class="grid grid-cols-1 gap-5 mt-5 md:grid-cols-2">
+      <div id="scrollable" class="grid h-auto gap-3 overflow-visible">
+        <div class="grid gap-2">
+          <label for="name">আপনার নাম লিখুন</label>
+          <input type="text" id="name" class="border border-[#b79797] rounded-md p-2 w-full" autocomplete="off">
+        </div>
+        <div class="grid gap-2">
+          <label for="number">মোবাইল নাম্বার লিখুন</label>
+          <input type="text" id="number" class="border border-[#b79797] rounded-md p-2 w-full" autocomplete="off">
+        </div>
+        <div class="grid gap-2">
+          <label for="address">আপনার সম্পূর্ন ঠিকানা</label>
+          <input type="text" id="address" class="border border-[#b79797] rounded-md p-2 w-full" autocomplete="off">
+        </div>
+        <div class="grid gap-4">
+          <!-- Product 1 -->
+          <label for="product1" class="grid grid-cols-8 gap-2 items-center p-2 border border-[#b79797] rounded-lg cursor-pointer hover:bg-gray-100 peer-checked:bg-gray-200">
+            <input type="checkbox" id="product1" class="peer">
+            <img src="images/RAJ06174.jpg" alt="Product" class="col-span-2 aspect-square object-cover rounded-md h-[70px] w-[70px]">
+            <div class="grid col-span-5 gap-2">
+              <div>Product 1</div>
+              <div class="flex items-center gap-2">
+                <div class="flex gap-2 text-sm border border-2 rounded border-slate-300/60 w-fit">
+                  <button class="decrease-btn px-2 cursor-pointer bg-slate-300/60" data-product="product1">-</button>
+                  <span class="quantity w-3 text-center" data-product="product1">১</span>
+                  <button class="increase-btn px-2 cursor-pointer bg-slate-300/60" data-product="product1">+</button>
+                </div>
+                <select class="size-select border border-[#b79797] rounded-md p-1 text-sm" data-product="product1">
+                  <option value="S">S</option>
+                  <option value="M">M</option>
+                  <option value="L">L</option>
+                  <option value="XL">XL</option>
+                </select>
+                <div>৳ ১০০ টাকা</div>
+              </div>
+            </div>
+          </label>
+
+          <!-- Product 2 -->
+          <label for="product2" class="grid grid-cols-8 gap-2 items-center p-2 border border-[#b79797] rounded-lg cursor-pointer hover:bg-gray-100 peer-checked:bg-gray-200">
+            <input type="checkbox" id="product2" class="peer">
+            <img src="images/RAJ06198.jpg" alt="Product" class="col-span-2 aspect-square object-cover rounded-md h-[70px] w-[70px]">
+            <div class="grid col-span-5 gap-2">
+              <div>Product 2</div>
+              <div class="flex items-center gap-2">
+                <div class="flex gap-2 text-sm border border-2 rounded border-slate-300/60 w-fit">
+                  <button class="decrease-btn px-2 cursor-pointer bg-slate-300/60" data-product="product2">-</button>
+                  <span class="quantity w-3 text-center" data-product="product2">১</span>
+                  <button class="increase-btn px-2 cursor-pointer bg-slate-300/60" data-product="product2">+</button>
+                </div>
+                <select class="size-select border border-[#b79797] rounded-md p-1 text-sm" data-product="product2">
+                  <option value="S">S</option>
+                  <option value="M">M</option>
+                  <option value="L">L</option>
+                  <option value="XL">XL</option>
+                </select>
+                <div>৳ ১০০ টাকা</div>
+              </div>
+            </div>
+          </label>
+
+          <!-- Product 3 -->
+          <label for="product3" class="grid grid-cols-8 gap-2 items-center p-2 border border-[#b79797] rounded-lg cursor-pointer hover:bg-gray-100 peer-checked:bg-gray-200">
+            <input type="checkbox" id="product3" class="peer">
+            <img src="images/RAJ06221.jpg" alt="Product" class="col-span-2 aspect-square object-cover rounded-md h-[70px] w-[70px]">
+            <div class="grid col-span-5 gap-2">
+              <div>Product 3</div>
+              <div class="flex items-center gap-2">
+                <div class="flex gap-2 text-sm border border-2 rounded border-slate-300/60 w-fit">
+                  <button class="decrease-btn px-2 cursor-pointer bg-slate-300/60" data-product="product3">-</button>
+                  <span class="quantity w-3 text-center" data-product="product3">১</span>
+                  <button class="increase-btn px-2 cursor-pointer bg-slate-300/60" data-product="product3">+</button>
+                </div>
+                <select class="size-select border border-[#b79797] rounded-md p-1 text-sm" data-product="product3">
+                  <option value="S">S</option>
+                  <option value="M">M</option>
+                  <option value="L">L</option>
+                  <option value="XL">XL</option>
+                </select>
+                <div>৳ ১০০ টাকা</div>
+              </div>
+            </div>
+          </label>
+
+          <!-- Product 4 -->
+          <label for="product4" class="grid grid-cols-8 gap-2 items-center p-2 border border-[#b79797] rounded-lg cursor-pointer hover:bg-gray-100 peer-checked:bg-gray-200">
+            <input type="checkbox" id="product4" class="peer">
+            <img src="images/RAJ06236.jpg" alt="Product" class="col-span-2 aspect-square object-cover rounded-md h-[70px] w-[70px]">
+            <div class="grid col-span-5 gap-2">
+              <div>Product 4</div>
+              <div class="flex items-center gap-2">
+                <div class="flex gap-2 text-sm border border-2 rounded border-slate-300/60 w-fit">
+                  <button class="decrease-btn px-2 cursor-pointer bg-slate-300/60" data-product="product4">-</button>
+                  <span class="quantity w-3 text-center" data-product="product4">১</span>
+                  <button class="increase-btn px-2 cursor-pointer bg-slate-300/60" data-product="product4">+</button>
+                </div>
+                <select class="size-select border border-[#b79797] rounded-md p-1 text-sm" data-product="product4">
+                  <option value="S">S</option>
+                  <option value="M">M</option>
+                  <option value="L">L</option>
+                  <option value="XL">XL</option>
+                </select>
+                <div>৳ ১০০ টাকা</div>
+              </div>
+            </div>
+          </label>
+
+          <!-- Product 5 -->
+          <label for="product5" class="grid grid-cols-8 gap-2 items-center p-2 border border-[#b79797] rounded-lg cursor-pointer hover:bg-gray-100 peer-checked:bg-gray-200">
+            <input type="checkbox" id="product5" class="peer">
+            <img src="images/RAJ06259.jpg" alt="Product" class="col-span-2 aspect-square object-cover rounded-md h-[70px] w-[70px]">
+            <div class="grid col-span-5 gap-2">
+              <div>Product 5</div>
+              <div class="flex items-center gap-2">
+                <div class="flex gap-2 text-sm border border-2 rounded border-slate-300/60 w-fit">
+                  <button class="decrease-btn px-2 cursor-pointer bg-slate-300/60" data-product="product5">-</button>
+                  <span class="quantity w-3 text-center" data-product="product5">১</span>
+                  <button class="increase-btn px-2 cursor-pointer bg-slate-300/60" data-product="product5">+</button>
+                </div>
+                <select class="size-select border border-[#b79797] rounded-md p-1 text-sm" data-product="product5">
+                  <option value="S">S</option>
+                  <option value="M">M</option>
+                  <option value="L">L</option>
+                  <option value="XL">XL</option>
+                </select>
+                <div>৳ ১০০ টাকা</div>
+              </div>
+            </div>
+          </label>
+
+          <!-- Product 6 -->
+          <label for="product6" class="grid grid-cols-8 gap-2 items-center p-2 border border-[#b79797] rounded-lg cursor-pointer hover:bg-gray-100 peer-checked:bg-gray-200">
+            <input type="checkbox" id="product6" class="peer">
+            <img src="images/RAJ06273.jpg" alt="Product" class="col-span-2 aspect-square object-cover rounded-md h-[70px] w-[70px]">
+            <div class="grid col-span-5 gap-2">
+              <div>Product 6</div>
+              <div class="flex items-center gap-2">
+                <div class="flex gap-2 text-sm border border-2 rounded border-slate-300/60 w-fit">
+                  <button class="decrease-btn px-2 cursor-pointer bg-slate-300/60" data-product="product6">-</button>
+                  <span class="quantity w-3 text-center" data-product="product6">১</span>
+                  <button class="increase-btn px-2 cursor-pointer bg-slate-300/60" data-product="product6">+</button>
+                </div>
+                <select class="size-select border border-[#b79797] rounded-md p-1 text-sm" data-product="product6">
+                  <option value="S">S</option>
+                  <option value="M">M</option>
+                  <option value="L">L</option>
+                  <option value="XL">XL</option>
+                </select>
+                <div>৳ ১০০ টাকা</div>
+              </div>
+            </div>
+          </label>
+
+          <!-- Product 7 -->
+          <label for="product7" class="grid grid-cols-8 gap-2 items-center p-2 border border-[#b79797] rounded-lg cursor-pointer hover:bg-gray-100 peer-checked:bg-gray-200">
+            <input type="checkbox" id="product7" class="peer">
+            <img src="images/RAJ06301.jpg" alt="Product" class="col-span-2 aspect-square object-cover rounded-md h-[70px] w-[70px]">
+            <div class="grid col-span-5 gap-2">
+              <div>Product 7</div>
+              <div class="flex items-center gap-2">
+                <div class="flex gap-2 text-sm border border-2 rounded border-slate-300/60 w-fit">
+                  <button class="decrease-btn px-2 cursor-pointer bg-slate-300/60" data-product="product7">-</button>
+                  <span class="quantity w-3 text-center" data-product="product7">১</span>
+                  <button class="increase-btn px-2 cursor-pointer bg-slate-300/60" data-product="product7">+</button>
+                </div>
+                <select class="size-select border border-[#b79797] rounded-md p-1 text-sm" data-product="product7">
+                  <option value="S">S</option>
+                  <option value="M">M</option>
+                  <option value="L">L</option>
+                  <option value="XL">XL</option>
+                </select>
+                <div>৳ ১০০ টাকা</div>
+              </div>
+            </div>
+          </label>
+        </div>
+      </div>
+      <div>
+        <div class="sticky grid gap-2 top-2">
+          <label for="order_list">অর্ডার লিস্ট</label>
+          <div class="border border-[#b79797] rounded-md w-full">
+            <table class="w-full">
+              <thead>
+                <tr>
+                  <th class="border-b border-[#b79797] p-2 w-[70%] text-left">পণ্য</th>
+                  <th class="border-b border-[#b79797] p-2 w-[10%] text-right">পরিমাণ</th>
+                  <th class="border-b border-[#b79797] p-2 w-[20%] text-right">মূল্য</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="border-b border-[#b79797] p-2">চিক শোল্ডার ব্যাগ</td>
+                  <td class="border-b border-[#b79797] p-2 text-right">১</td>
+                  <td class="border-b border-[#b79797] p-2 text-right">৬৫০ টাকা</td>
+                </tr>
+                <tr>
+                  <td class="border-b border-[#b79797] p-2">চিক শোল্ডার ব্যাগ</td>
+                  <td class="border-b border-[#b79797] p-2 text-right">১</td>
+                  <td class="border-b border-[#b79797] p-2 text-right">৬৫০ টাকা</td>
+                </tr>
+                <tr>
+                  <td class="border-b border-[#b79797] p-2">চিক শোল্ডার ব্যাগ</td>
+                  <td class="border-b border-[#b79797] p-2 text-right">১</td>
+                  <td class="border-b border-[#b79797] p-2 text-right">৬৫০ টাকা</td>
+                </tr>
+              </tbody>
+            </table>
+            <table class="w-full">
+              <tbody>
+                <tr>
+                  <td class="font-semibold border-b border-[#b79797] p-2 w-[20%]">জেলা</td>
+                  <td class="border-b border-[#b79797] p-2 text-right w-[80%]">
+                    <div>
+                      <input type="radio" name="delivery" id="delivery1" class="mr-2">
+                      <label for="delivery1">ঢাকার ভিতরে: <span class="text-lg font-semibold">৳ ৮০ টাকা</span></label>
+                    </div>
+                    <div>
+                      <input type="radio" name="delivery" id="delivery2" class="mr-2">
+                      <label for="delivery2">ঢাকার বাহিরে: <span class="text-lg font-semibold">৳ ১২০ টাকা</span></label>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="font-semibold">
+                  <td class="border-b border-[#b79797] p-2 w-[20%]">মোট</td>
+                  <td class="border-b border-[#b79797] p-2 text-right text-lg w-[80%]">৬৫০ টাকা</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <button class="bg-[#A72D8F] text-white hover:bg-[#95167c] p-3 rounded cursor-pointer">অর্ডার করুন</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add this script at the bottom of your <body> tag before </body> -->
+<script>
+  // Function to convert Bangla numerals to Arabic numerals
+  function banglaToArabic(banglaNum) {
+    const banglaDigits = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
+    const arabicDigits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    let result = banglaNum;
+    for (let i = 0; i < banglaDigits.length; i++) {
+      result = result.replace(new RegExp(banglaDigits[i], 'g'), arabicDigits[i]);
+    }
+    return parseInt(result) || 0; // Default to 0 if parsing fails
+  }
+
+  // Increase quantity
+  document.querySelectorAll('.increase-btn').forEach(button => {
+    button.addEventListener('click', function () {
+      const productId = this.getAttribute('data-product');
+      const quantitySpan = document.querySelector(`.quantity[data-product="${productId}"]`);
+      let quantity = banglaToArabic(quantitySpan.textContent);
+      quantitySpan.textContent = (quantity + 1).toString(); // Convert back to string
+    });
+  });
+
+  // Decrease quantity
+  document.querySelectorAll('.decrease-btn').forEach(button => {
+    button.addEventListener('click', function () {
+      const productId = this.getAttribute('data-product');
+      const quantitySpan = document.querySelector(`.quantity[data-product="${productId}"]`);
+      let quantity = banglaToArabic(quantitySpan.textContent);
+      if (quantity > 1) {
+        quantitySpan.textContent = (quantity - 1).toString(); // Convert back to string
+      }
+    });
+  });
+
+  // Log selected size (for testing)
+  document.querySelectorAll('.size-select').forEach(select => {
+    select.addEventListener('change', function () {
+      const productId = this.getAttribute('data-product');
+      const selectedSize = this.value;
+      console.log(`Product ${productId} size selected: ${selectedSize}`);
+      // Optionally display the size somewhere, e.g., in the order summary
+    });
+  });
+</script>
+      <!-- Right side (order summary) remains unchanged -->
+
+</div>
+
+</div>
+
+
+
+
+  <script src="script.js"></script>
+</body>
+</html>
